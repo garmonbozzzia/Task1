@@ -1,0 +1,60 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:automerge = "clr-namespace:AutomergeTool;assembly=AutomergeTool"
+        xmlns:local ="clr-namespace:WpfApp"
+        Title="MainWindow" Height="600" Width="800">
+  <Window.Resources>
+    <local:TypeToColorConverter x:Key="converter"></local:TypeToColorConverter>
+  </Window.Resources>
+  <Window.DataContext>
+    <automerge:Processor></automerge:Processor>
+  </Window.DataContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" ></RowDefinition>
+      <RowDefinition Height="Auto" ></RowDefinition>
+    </Grid.RowDefinitions>
+    <ScrollViewer>
+      <ItemsControl Name="itemsControl1" Padding="5,0,0,0" Grid.Row="0" 
+                   ItemsSource="{Binding MergedCode.Result}">
+
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border Margin="2,1,0,0" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+              <DockPanel>
+                <Rectangle DockPanel.Dock="Left" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5"></Rectangle>
+
+                <ItemsControl ItemsSource="{Binding Data}" Margin=" 3, 0 ,0, 0" FontSize="15">
+                </ItemsControl>
+              </DockPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+    
+    <StackPanel Grid.Row="1">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Click="Button_Click"
+                Padding="5, 1" Content="Source"
+                DataContext="{Binding SourceCode}"></Button>
+        <Button Grid.Column="0" Grid.Row="1" Click="Button_Click"
+                Padding="5, 1" Content="User1"
+                DataContext="{Binding UserCode1}"></Button>
+        <Button Grid.Column="0" Grid.Row="2" Click="Button_Click"
+                Padding="5, 1" Content="User2"
+                DataContext="{Binding UserCode2}"></Button>        
+      </Grid>
+    </StackPanel>
+  </Grid>
+</Window>
