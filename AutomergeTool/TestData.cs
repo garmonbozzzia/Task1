@@ -13,34 +13,9 @@ namespace AutomergeTool
 
     public TestData()
     {
-      Source = new List<string>();
-      for (int i = 0; i < 10; i++)
-      {
-        Source.Add(i.ToString());
-      }
-
-      User1 = new List<string>();
-      User2 = new List<string>();
-
-      for (int i = 0; i < 9; i++)
-      {
-        User1.Add(i.ToString());
-        if (i < 5)
-        {
-          User1.Add("A");
-          User1.Add("A");
-          User1.Add("A");
-        } 
-      }
-
-      for (int i = 1; i < 10; i++)
-      {
-        User2.Add(i.ToString());
-        if (i > 4)
-        {
-          User2.Add("B");
-        }
-      }
+      Source = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+      User1 = new List<string>() { "5", "6", "7", "8", "9", "0", "1", "2", "A", "3" };
+      User2 = new List<string>() { "B", "B", "B", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B" };
     }
   }
 }

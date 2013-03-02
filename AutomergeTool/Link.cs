@@ -9,5 +9,10 @@ namespace AutomergeTool
   {
     public int SourceLineIndex { get; set; }
     public int UserLineIndex { get; set; }
+    
+    public override string ToString()
+    {
+      return "S:" + SourceLineIndex.ToString() + " U:" + UserLineIndex.ToString() ;
+    }
   }
 }

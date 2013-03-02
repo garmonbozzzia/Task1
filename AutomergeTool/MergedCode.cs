@@ -54,34 +54,40 @@ namespace AutomergeTool
 
       foreach (int index in sharedLines)
       {
-        //проверяем на конфликт
-        if (CheckConflict(start, index))
-        {
-          ConflictBlock conflict = new ConflictBlock(User1, User2) { First = start, Last = index};
-          Result.Add(conflict);
-
-          if (index - start > 1)
-          {
-            Result.Add(new DeletedBlock(start + 1, index - 1) { Type = Type.deleted });
-          }          
-        }
-        else
-        {
-          for (int i = start; i < index; i++)
-          {
-            InsertedBlock inserted = GetInsertedBlock(i);
-            if (inserted != null)
-            {
-              Result.Add(inserted);
-            }
-            if (i > start)
-            {
-              AddDeletedLine(i);
-            }
-          }
-        }
+        Process(start, index);   
         start = index;
         AddSharedLine(index);
+      }
+      Process(start, Source.Data.Count );      
+    }
+
+    void Process(int start, int index)
+    {
+      //проверяем на конфликт
+      if (CheckConflict(start, index-1))
+      {
+        ConflictBlock conflict = new ConflictBlock(User1, User2) { First = start, Last = index };
+        Result.Add(conflict);
+
+        if (index - start > 1)
+        {
+          Result.Add(new DeletedBlock(start + 1, index - 1) { Type = Type.deleted });
+        }
+      }
+      else
+      {
+        for (int i = start; i < index; i++)
+        {
+          InsertedBlock inserted = GetInsertedBlock(i);
+          if (inserted != null)
+          {
+            Result.Add(inserted);
+          }
+          if (i > start)
+          {
+            AddDeletedLine(i);
+          }
+        }
       }
     }
 
