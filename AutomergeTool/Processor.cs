@@ -24,19 +24,17 @@ namespace AutomergeTool
 
         TestData test = new TestData();
 
-        //SourceCode.Data = test.Source;
-        //UserCode1.Data = test.User1;
-        //UserCode2.Data = test.User2;
+        SourceCode.Data = test.Source;
+        UserCode1.Data = test.User1;
+        UserCode2.Data = test.User2;
 
-        //MarkedUserCode markedCode1 = new MarkedUserCode(SourceCode, UserCode1);
-        //MarkedUserCode markedCode2 = new MarkedUserCode(SourceCode, UserCode2);
+        MarkedUserCode markedCode1 = new MarkedUserCode(SourceCode, UserCode1);
+        MarkedUserCode markedCode2 = new MarkedUserCode(SourceCode, UserCode2);
 
-        //MergedCode.User1 = markedCode1;
-        //MergedCode.User2 = markedCode2;
-        //MergedCode.Merge();
+        MergedCode.User1 = markedCode1;
+        MergedCode.User2 = markedCode2;
+        MergedCode.Merge();
 
-        //IInputParser input = new StreamInputParser("");
-        //input.ParseTo(SourceCode.Data);        
       }
       catch (Exception)
       {               

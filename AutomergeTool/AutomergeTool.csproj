@@ -42,8 +42,11 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="ConflictBlock.cs" />
+    <Compile Include="DeepMarker.cs" />
+    <Compile Include="DeepMarkerAlgorythm.cs" />
     <Compile Include="DeletedBlock.cs" />
     <Compile Include="IInputParser.cs" />
+    <Compile Include="IMarkerAlgorythm.cs" />
     <Compile Include="InsertedBlock.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="MarkedUserCode.cs" />
@@ -52,6 +55,7 @@
     <Compile Include="Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedBlock.cs" />
+    <Compile Include="SimpleMarkerAlgorythm.cs" />
     <Compile Include="SourceCode.cs" />
     <Compile Include="StreamInputParser.cs" />
     <Compile Include="StringInputParser.cs" />
