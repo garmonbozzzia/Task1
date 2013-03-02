@@ -61,21 +61,20 @@ namespace AutomergeTool
         int index = User.IndexOf(Source[i], startFrom);
         if (index != -1)
         {
-          List<String> tail = User.GetRange(startFrom, index - startFrom);
+          List<String> tail = User.GetRange(startFrom, index - startFrom + 1);
           List<String> sourceTail = Source.GetRange(i + 1, Source.Count - i - 1);
-          if (SimpleTailChecking(tail, i+1))
-          {
-            result.Add(new Link() { SourceLineIndex = i, UserLineIndex = index });
-            startFrom = index + 1;
-          }
-          else
+          int tailRoot = TailRoot(tail, i+1);
+          if ( tailRoot > -1)
           {
             Arguments param = new Arguments();
             param.ResultTail = result.GetRange(0, result.Count); //copy
-            param.SourceStart = index + 1;
+            param.SourceStart = tailRoot;
             param.UserStart = startFrom;
             Branches.Add(param);
           }
+
+          result.Add(new Link() { SourceLineIndex = i, UserLineIndex = index });            
+          startFrom = index + 1;          
         }
       }
 
@@ -85,7 +84,7 @@ namespace AutomergeTool
       }
     }
 
-    bool SimpleTailChecking( List<String> tail, int sourceStart )
+    int TailRoot( List<String> tail, int sourceStart )
     {
       for (int i = sourceStart; i < Source.Count - 1; i++)
       {
@@ -96,12 +95,12 @@ namespace AutomergeTool
           {
             if (-1 != tail.IndexOf(Source[j], index + 1))
             {
-              return false;
+              return i;
             }
           }
 	      }        
       }
-      return true;
+      return -1;
     }
   }
 }
