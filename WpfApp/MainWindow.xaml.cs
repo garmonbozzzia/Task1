@@ -21,13 +21,23 @@ namespace WpfApp
   public partial class MainWindow : Window
   {
 
-    public AutomergeTool.Processor AutomergeTool { get; set; }
+    public AutomergeTool.Processor AutomergeProcessor { get; set; }
 
     public MainWindow()
     {
       TestingList();
       InitializeComponent();
-      AutomergeTool = (AutomergeTool.Processor)DataContext;
+      AutomergeProcessor = (AutomergeTool.Processor)DataContext;
+      AutomergeTool.TestData test = new AutomergeTool.TestData();
+      test.Init3(500);
+
+      //AutomergeProcessor.SetSource(test.Source);
+      //AutomergeProcessor.SetUser1(test.User1);
+      //AutomergeProcessor.SetUser2(test.Source);
+
+      //AutomergeProcessor.Merge();
+      
+      itemsControl1.Items.Refresh();
 
     }
 
@@ -61,7 +71,7 @@ namespace WpfApp
         button.IsEnabled = false;
       }
 
-      AutomergeTool.Merge();
+      AutomergeProcessor.Merge();
       itemsControl1.Items.Refresh();
             
     }

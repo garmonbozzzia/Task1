@@ -10,6 +10,13 @@ namespace AutomergeTool
     private int index;
     public int First { get; set; }
     public int Last { get; set; }
+    public int Count
+    {
+      get
+      {
+        return Last - First + 1;
+      }
+    }
 
     public SourceCode Source { get; set; }
 
@@ -26,7 +33,15 @@ namespace AutomergeTool
     {
       get 
       {
-        return Source.Data.GetRange(First, Last-First+1);  
+        if (Source != null && Source.Data.Count > 0)
+        {
+          return Source.Data.GetRange(First, Count);
+        }
+        else
+        {
+          return new List<string>();
+        }
+
       }
     }    
   }

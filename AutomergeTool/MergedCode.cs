@@ -49,6 +49,7 @@ namespace AutomergeTool
     {
       List<int> sharedLines = new List<int>();
       FindSharedSourceLines(sharedLines);
+      Result.Clear();
 
       int start = -1;
 

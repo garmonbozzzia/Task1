@@ -28,8 +28,15 @@ namespace AutomergeTool
 
     List<Link> longest = new List<Link>();
 
+    public bool Stop { get; set; }
+
     public void Do(Marker marker)
     {
+      Stop = false;
+      System.Timers.Timer timer = new System.Timers.Timer(2000);
+      timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+      timer.Start();
+
       Count = 0;
       Source = marker.SourceData;
       User = marker.UserData;
@@ -42,12 +49,21 @@ namespace AutomergeTool
       while (Branches.Count > 0)
       {
         Count++;
-        Action(Branches[0]);
-        Branches.RemoveAt(0);              
+        Action(Branches[0]);        
+        Branches.RemoveAt(0);
+        if (Stop)
+        {
+          Branches.Clear();
+        }
       }
 
       marker.Mapping = longest;
       Console.WriteLine(Count);
+    }
+
+    void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+    {
+      Stop = true;
     }
 
     void ConstructLongest()

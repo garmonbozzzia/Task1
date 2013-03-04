@@ -39,7 +39,7 @@ namespace AutomergeTool
     {
       get 
       {
-        if (Source != null)
+        if (Source != null && Source.Data.Count > 0)
         {
           return Source.Data.GetRange(First, Count);          
         }

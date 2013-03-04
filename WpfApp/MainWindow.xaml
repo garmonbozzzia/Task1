@@ -78,7 +78,7 @@
     </Grid.RowDefinitions>
     <ScrollViewer >
       <ItemsControl Name="itemsControl1" Padding="5,0,0,0" Grid.Row="0" 
-                   ItemsSource="{Binding MergedCode.Result}">        
+                   ItemsSource="{Binding MergedCode.Result}" Background="Brown">        
       </ItemsControl>
     </ScrollViewer>
     
