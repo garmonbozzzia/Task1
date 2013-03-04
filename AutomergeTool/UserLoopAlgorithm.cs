@@ -33,7 +33,7 @@ namespace AutomergeTool
     public void Do(Marker marker)
     {
       Stop = false;
-      System.Timers.Timer timer = new System.Timers.Timer(2000);
+      System.Timers.Timer timer = new System.Timers.Timer(4000);
       timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
       timer.Start();
 
