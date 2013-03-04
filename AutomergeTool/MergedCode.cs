@@ -81,7 +81,7 @@ namespace AutomergeTool
           InsertedBlock inserted = GetInsertedBlock(i);
           if (inserted != null)
           {
-            Result.Add(inserted);
+            Result.Add(inserted);            
           }
           if (i > start)
           {

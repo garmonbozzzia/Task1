@@ -12,14 +12,14 @@ namespace AutomergeTool
 
     public List<Link> Mapping { get; set; }
 
-    public IMarkerAlgorythm Algorythm { get; set; }
+    public IMarkerAlgorithm Algorythm { get; set; }
 
     public Marker( List<String> userData, List<String> sourceData)
     {
       Mapping = new List<Link>();
       UserData = userData;
       SourceData = sourceData;
-      Algorythm = new DeepMarkerAlgorythm();
+      Algorythm = new UserLoopAlgorithm();
 
       Action();
     }

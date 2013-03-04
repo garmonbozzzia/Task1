@@ -40,26 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Block.cs" />
-    <Compile Include="ConflictBlock.cs" />
+    <Compile Include="BinaryTreeAlgorithm.cs" />
+    <Compile Include="Common Types\Block.cs" />
+    <Compile Include="Common Types\ConflictBlock.cs" />
     <Compile Include="DeepMarker.cs" />
-    <Compile Include="DeepMarkerAlgorythm.cs" />
-    <Compile Include="DeletedBlock.cs" />
-    <Compile Include="IInputParser.cs" />
-    <Compile Include="IMarkerAlgorythm.cs" />
-    <Compile Include="InsertedBlock.cs" />
+    <Compile Include="DeepMarkerAlgorithm.cs" />
+    <Compile Include="Common Types\DeletedBlock.cs" />
+    <Compile Include="Input\IInputParser.cs" />
+    <Compile Include="IMarkerAlgorithm.cs" />
+    <Compile Include="Common Types\InsertedBlock.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="MarkedUserCode.cs" />
     <Compile Include="Marker.cs" />
     <Compile Include="MergedCode.cs" />
     <Compile Include="Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedBlock.cs" />
-    <Compile Include="SimpleMarkerAlgorythm.cs" />
+    <Compile Include="Common Types\SharedBlock.cs" />
+    <Compile Include="SimpleMarkerAlgorithm.cs" />
     <Compile Include="SourceCode.cs" />
-    <Compile Include="StreamInputParser.cs" />
-    <Compile Include="StringInputParser.cs" />
-    <Compile Include="TestData.cs" />
+    <Compile Include="Input\StreamInputParser.cs" />
+    <Compile Include="Input\StringInputParser.cs" />
+    <Compile Include="Testing\TestData.cs" />
+    <Compile Include="Testing\TestOutput.cs" />
+    <Compile Include="UserLoopAlgorithm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
