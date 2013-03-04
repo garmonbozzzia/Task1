@@ -13,9 +13,9 @@ namespace WpfApp
   {
     static private Dictionary<AutomergeTool.Type, SolidColorBrush> colors = new Dictionary<AutomergeTool.Type, SolidColorBrush>(){
       { AutomergeTool.Type.conflict, new SolidColorBrush(Colors.DarkRed) },
-      { AutomergeTool.Type.inserted, new SolidColorBrush(Colors.DarkGreen)},
-      { AutomergeTool.Type.deleted, new SolidColorBrush(Colors.Black) },
-      { AutomergeTool.Type.shared, new SolidColorBrush(Colors.LightGray) },
+      { AutomergeTool.Type.inserted, new SolidColorBrush(Colors.Yellow)},
+      { AutomergeTool.Type.deleted, new SolidColorBrush(Colors.LightGray) },
+      { AutomergeTool.Type.shared, new SolidColorBrush(Colors.White) },
     };
 
     public TypeToColorConverter()

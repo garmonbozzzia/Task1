@@ -6,6 +6,67 @@
         Title="MainWindow" Height="600" Width="800">
   <Window.Resources>
     <local:TypeToColorConverter x:Key="converter"></local:TypeToColorConverter>
+    <DataTemplate DataType="{x:Type automerge:SharedBlock}">      
+      <DockPanel>
+        <Rectangle Stroke="Black"  DockPanel.Dock="Left" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5" StrokeThickness="3"></Rectangle>
+        <Border Margin="1" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+          <ItemsControl ItemsSource="{Binding Data}" Margin=" 3, 0 ,0, 0" FontSize="15">
+          </ItemsControl>
+        </Border>
+      </DockPanel>      
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type automerge:InsertedBlock}">
+      <DockPanel>
+        <Rectangle Stroke="Black" StrokeThickness="3" DockPanel.Dock="Left" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5"></Rectangle>
+        <Border Margin="1" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+
+          <ItemsControl ItemsSource="{Binding Data}" Margin=" 3, 0 ,0, 0" FontSize="15">
+          </ItemsControl>
+        </Border>
+
+      </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type automerge:DeletedBlock}">
+        <DockPanel>
+          <Rectangle Stroke="Black" StrokeThickness="3" DockPanel.Dock="Left" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5"></Rectangle>
+          <Border Margin="1" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+            <ItemsControl ItemsSource="{Binding Lines}" Margin=" 3, 0 ,0, 0" FontSize="15">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding}" TextDecorations="Strikethrough" >
+                  </TextBlock>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Border>
+      </DockPanel>
+    </DataTemplate>
+
+
+    <DataTemplate DataType="{x:Type automerge:ConflictBlock}">
+      <Grid Margin="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Stroke="Black" StrokeThickness="3" Grid.Column="0" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5"></Rectangle>
+        <Border Grid.Column="1" Margin="1" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+          <ItemsControl ItemsSource="{Binding User1Blocks}" Margin=" 3, 0 ,0, 0" FontSize="15">
+          </ItemsControl>
+        </Border>
+
+        <Border Grid.Column="2" Margin="1" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
+          <ItemsControl ItemsSource="{Binding User2Blocks}" Margin=" 3, 0 ,0, 0" FontSize="15">
+          </ItemsControl>
+        </Border>
+      </Grid>
+    </DataTemplate>
+
+    
+
   </Window.Resources>
   <Window.DataContext>
     <automerge:Processor></automerge:Processor>
@@ -15,21 +76,9 @@
       <RowDefinition Height="*" ></RowDefinition>
       <RowDefinition Height="Auto" ></RowDefinition>
     </Grid.RowDefinitions>
-    <ScrollViewer>
+    <ScrollViewer >
       <ItemsControl Name="itemsControl1" Padding="5,0,0,0" Grid.Row="0" 
-                   ItemsSource="{Binding MergedCode.Result}">
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <Border Margin="2,1,0,0" BorderThickness="1" CornerRadius="5" BorderBrush="DarkGray" Background="White">
-              <DockPanel>
-                <Rectangle DockPanel.Dock="Left" Width="40" Fill="{Binding Type, Converter={StaticResource converter} }" RadiusX="3" RadiusY="5"></Rectangle>
-
-                <ItemsControl ItemsSource="{Binding Data}" Margin=" 3, 0 ,0, 0" FontSize="15">
-                </ItemsControl>
-              </DockPanel>
-            </Border>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
+                   ItemsSource="{Binding MergedCode.Result}">        
       </ItemsControl>
     </ScrollViewer>
     

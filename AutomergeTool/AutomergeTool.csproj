@@ -43,6 +43,7 @@
     <Compile Include="BinaryTreeAlgorithm.cs" />
     <Compile Include="Common Types\Block.cs" />
     <Compile Include="Common Types\ConflictBlock.cs" />
+    <Compile Include="Common Types\NumberedLine.cs" />
     <Compile Include="DeepMarker.cs" />
     <Compile Include="DeepMarkerAlgorithm.cs" />
     <Compile Include="Common Types\DeletedBlock.cs" />

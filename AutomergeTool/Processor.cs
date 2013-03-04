@@ -23,8 +23,8 @@ namespace AutomergeTool
         MergedCode.Source = SourceCode;
 
         TestData test = new TestData();
-        test.Init0(1500);
-        test.User2 = test.Source;
+        test.Init1();
+        //test.User2 = test.Source;
 
         SourceCode.Data = test.Source;
         UserCode1.Data = test.User1;

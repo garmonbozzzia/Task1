@@ -28,6 +28,6 @@ namespace AutomergeTool
       {
         return Source.Data.GetRange(First, Last-First+1);  
       }
-    }
+    }    
   }
 }

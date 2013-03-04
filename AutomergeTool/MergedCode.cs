@@ -71,7 +71,7 @@ namespace AutomergeTool
 
         if (index - start > 1)
         {
-          Result.Add(new DeletedBlock(start + 1, index - 1) { Type = Type.deleted });
+          Result.Add(new DeletedBlock(start + 1, index - 1, Source));
         }
       }
       else
@@ -95,7 +95,7 @@ namespace AutomergeTool
     {
       if ( Result.Count == 0 || Result.Last().Type != Type.deleted )
       {
-        Result.Add(new DeletedBlock(index));
+        Result.Add(new DeletedBlock(index, Source));
       }
       else
       {

@@ -9,19 +9,45 @@ namespace AutomergeTool
   {
     public int First { get; set; }
     public int Last { get; set; }
+    public int Count 
+    {
+      get
+      {
+        return Last - First + 1;
+      }      
+    }
 
-    public DeletedBlock(int first, int last)
+    public SourceCode Source { get; set; }
+
+    public DeletedBlock(int first, int last, SourceCode source)
     {
       First = first;
       Last = last;
-      Type = AutomergeTool.Type.deleted;
+      Source = source;
+      Type = AutomergeTool.Type.deleted;  
     }
 
-    public DeletedBlock(int index)
+    public DeletedBlock(int index, SourceCode source)
     {
       First = index;
       Last = index;
+      Source = source;
       Type = AutomergeTool.Type.deleted;
+    }
+
+    public List<String> Lines
+    {
+      get 
+      {
+        if (Source != null)
+        {
+          return Source.Data.GetRange(First, Count);          
+        }
+        else
+        {
+          return new List<string>();
+        }
+      }
     }
 
     public override List<string> Data
