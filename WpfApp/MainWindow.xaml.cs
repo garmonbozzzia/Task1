@@ -25,9 +25,22 @@ namespace WpfApp
 
     public MainWindow()
     {
+      TestingList();
       InitializeComponent();
       AutomergeTool = (AutomergeTool.Processor)DataContext;
 
+    }
+
+    public void TestingList()
+    {
+      List<int> list = new List<int>() { 1, 2, 3, 4, 5 };
+      for (int i = 0; i < list.Count; i++)      
+      {
+        if (i < 3)
+        {
+          list.Add(10);                
+        }
+      }
     }
 
     private void TextBlock_DragEnter(object sender, DragEventArgs e)
